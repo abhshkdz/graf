@@ -1,4 +1,4 @@
-require "graf/version"
+require_relative "graf/version"
 
 module Graf
   # Your code goes here...
