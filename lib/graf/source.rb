@@ -5,28 +5,30 @@ module Graf
 	class Source
 
 		class << self
-
-			def count_of_commits(log, author)
-				log.grep(author).size
-			end
-
 			TICK = '▇'
 
-			def authors()
-				freq = Hash.new()
-				log = `git log --pretty=format:'%an'`.split("\n")
-				log.uniq.each do |author|
-					freq[author] = count_of_commits(log, author)
-				end
+			def authors
+        log = `git shortlog -se`
+        log = log.scan(/(\d+)\t(.*)\<(.*)\>/)
+        frequency = {}
+        log.each do |row|
+          count, username, email = *row
+          username.strip!
+          email.strip!
+          frequency[email] ||= {}
+          frequency[email][:count] ||= 0
+          frequency[email][:count] += count.to_i
+          frequency[email][:username] = username
+        end
 
-				max = freq.max_by { |k,v| v }[1]
+        max = frequency.map {|v|v.last[:count]}.max
 
-				authors = freq.keys.sort_by do |author|
-					freq[author]
+				authors = frequency.keys.sort_by do |author|
+          frequency[author][:count]
 				end.reverse.map do |author|
-					TICK * (freq[author] * 70 / max) +
-					" #{author} (#{freq[author]} commit" +
-					(freq[author] == 1 ? ")" : "s)")
+					TICK * (frequency[author][:count] * 70 / max) +
+					" #{frequency[author][:username]} (#{frequency[author][:count]} commit" +
+					(frequency[author][:count] == 1 ? ")" : "s)")
 				end
 
 				return authors
