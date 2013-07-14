@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 module Graf
 
 	class Source
@@ -22,7 +24,7 @@ module Graf
 				authors = freq.keys.sort_by do |author|
 					freq[author]
 				end.reverse.map do |author|
-					TICK * (freq[author] * 70 / max) + 
+					TICK * (freq[author] * 70 / max) +
 					" #{author} (#{freq[author]} commit" +
 					(freq[author] == 1 ? ")" : "s)")
 				end
