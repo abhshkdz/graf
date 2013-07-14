@@ -1,24 +1,14 @@
 # Graf
 
-TODO: Write a gem description
+Graf is a simple git log analyzer gem.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'graf'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install graf
 
 ## Usage
 
-TODO: Write usage instructions here
+![](http://i.imgur.com/f0zaEiG.gif)
 
 ## Contributing
 
