@@ -10,6 +10,8 @@ Graf is a simple git log analyzer gem.
 
 ![](http://i.imgur.com/f0zaEiG.gif)
 
+In case you are wondering how I made that GIF, [here it is](http://askubuntu.com/a/107735/65847).
+
 ## Contributing
 
 1. Fork it
