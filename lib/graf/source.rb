@@ -12,6 +12,7 @@ module Graf
 					count, username, email = *row
 					username.strip!
 					email.strip!
+					email.gsub!(/(.*)@.*/, '\1')
 					frequency[email] ||= {}
 					frequency[email][:count] ||= 0
 					frequency[email][:count] += count.to_i
