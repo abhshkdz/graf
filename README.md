@@ -1,4 +1,4 @@
-# Graf
+# Graf [![Gem Version](https://badge.fury.io/rb/graf.png)](http://rubygems.org/gems/graf)
 
 Graf is a simple git log analyzer gem.
 
