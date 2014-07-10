@@ -3,6 +3,7 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
+require 'open3'
 require_relative '../lib/graf'
 
-puts Graf::Source.authors
+puts Graf::Filter.process
